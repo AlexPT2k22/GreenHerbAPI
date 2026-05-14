@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const authService = require('../../src/services/authService');
+const authService = require('../../services/authService');
 
 describe('Testes de Unidade authService', () => {
 

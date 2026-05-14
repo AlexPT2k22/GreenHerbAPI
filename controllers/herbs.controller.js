@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const herbsService = require('../src/services/herbsService');
+const herbsService = require('../services/herbsService');
 
 // Estrutura em memória para herbs - EXPORTADA para acesso em testes
 let db = [];

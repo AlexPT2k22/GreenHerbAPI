@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const herbsService = require('../../src/services/herbsService');
-const plansService = require('../../src/services/plansService');
+const herbsService = require('../../services/herbsService');
+const plansService = require('../../services/plansService');
 
 const fixturesPath = path.join(__dirname, '../fixtures');
 

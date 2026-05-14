@@ -1,4 +1,4 @@
-const plansService = require('../../src/services/plansService');
+const plansService = require('../../services/plansService');
 
 describe('Testes de Unidade - Plans Service', () => {
 

@@ -1,4 +1,4 @@
-const herbsService = require('../../src/services/herbsService');
+const herbsService = require('../../services/herbsService');
 
 describe('Testes de Unidade - Herbs Service', () => {
 
