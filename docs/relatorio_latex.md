@@ -409,9 +409,9 @@ A matriz de rastreabilidade estabelece a ligação bidirecional entre casos de t
 
 \begin{table}[H]
 \centering
-\footnotesize % Reduz ligeiramente o tamanho do texto
-\resizebox{\textwidth}{!}{% Força a tabela a caber na largura da página
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -439,7 +439,7 @@ TU-04 & RF-02 & (authService) & Unid. & CM: F|F (Ambos presentes) + PE válida &
 \caption{Matriz de Rastreabilidade - \texttt{generateRefreshToken}}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -466,7 +466,7 @@ TU-09 & RF-03 & (authService) & Unid. & PE fallback & Usa JWT\_SECRET quando JWT
 \caption{Matriz de Rastreabilidade - \texttt{verifyToken}}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -493,7 +493,7 @@ TU-14 & RF-05 & (authService) & Unid. & PE fallback & Usa JWT\_SECRET do ambient
 \caption{Matriz de Rastreabilidade - \texttt{renewAccessToken}}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -516,7 +516,7 @@ TU-17 & RF-04 & (authService) & Unid. & PE fallback & Usa JWT\_SECRET quando JWT
 \caption{Matriz de Rastreabilidade - \texttt{login}}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -547,7 +547,7 @@ TU-24 & RF-01, 02, 03 & (authService) & Unid. & PE fallback user.id & Retorna to
 \caption{Matriz de Rastreabilidade - \texttt{hasProfile}}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -787,7 +787,7 @@ O Sprint 2 alarga o âmbito dos testes para cobrir funcionalidades relacionadas 
 \caption{Testes de Unidade: Validação de Ervas e Valores Limite (TU-H01 a TU-H15)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -824,7 +824,7 @@ TU-H15 & RN-13 & (herbsService) & Unid. & VL: lumMax = 100001 & Rejeitado (fora 
 \caption{Testes de Unidade: Importação e Parsing CSV (TU-H16 a TU-H25)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -855,7 +855,7 @@ TU-H25 & RF-04 & (herbsService) & Unid. & PE: Espaços (trim) & Objeto com campo
 \caption{Testes de Unidade: Planos, Duração e MC/DC (TU-P01 a TU-P22)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -884,7 +884,7 @@ TU-P21 & RN-04 & (plansService) & Unid. & MC/DC: \texttt{pontual \&\& !autoriz} 
 \caption{Testes de Unidade: Alertas e Transições de Estado (TU-P23 a TU-P37)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -915,7 +915,7 @@ TU-P37 & RN-41 & (plansService) & Unid. & MC/DC: Ativo $\to$ Inválido & Rejeita
 \caption{Testes de Integração: Fluxos de Dados CSV e Ciclo de Vida (TI-01 a TI-05)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{3.2cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1349,7 +1349,7 @@ TU-160 & resolvido & Responsável & "Válida" & Rejeita (estado) \\
 \caption{Rastreabilidade - Batches Service (29 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1420,7 +1420,7 @@ TU-113 & RN-35 & (batchesService) & Unid. & PE: Duração zero & productivity=nu
 \caption{Rastreabilidade - Measurements Service (29 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1491,7 +1491,7 @@ TU-142 & - & (measurementsService) & Unid. & PE: Nenhum valor válido & avg=null
 \caption{Rastreabilidade - Alerts Service (29 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1562,7 +1562,7 @@ TU-171 & - & (alertsService) & Unid. & PE: Aviso antigo (>24h) & priority=7 (5+2
 \caption{Rastreabilidade - Tasks Service (21 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1617,7 +1617,7 @@ TU-192 & - & (tasksService) & Unid. & PE: Não cancela já cancelada & canCancel
 \caption{Rastreabilidade - Automation Service (22 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1674,7 +1674,7 @@ TU-214 & RN-45 & (automationService) & Unid. & PE: Manual → sugerir & actionTy
 \caption{Rastreabilidade - Reports Service (18 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1723,7 +1723,7 @@ TU-232 & - & (reportsService) & Unid. & PE: Sem datas & data.length=0 & 0 regist
 \caption{Rastreabilidade - Audit Service (13 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
@@ -1762,7 +1762,7 @@ TU-245 & - & (auditService) & Unid. & PE: Filtra por userId & logs.length=1 & 1 
 \caption{Rastreabilidade - Users Service (22 testes)}
 \footnotesize
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{2.5cm}|l|p{2.8cm}|p{2.8cm}|p{2.5cm}|c|}
+\begin{tabular}{|l|l|p{3cm}|p{1.2cm}|p{2.5cm}|p{2.5cm}|p{2.2cm}|c|}
 \hline
 \textbf{ID} & \textbf{Req.} & \textbf{Endpoint} & \textbf{Nível} & \textbf{Técnica} & \textbf{Resultado Esperado} & \textbf{Resultado Obtido} & \textbf{Estado} \\
 \hline
