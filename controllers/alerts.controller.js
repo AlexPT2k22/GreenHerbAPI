@@ -29,3 +29,28 @@ exports.delete = (req, res) => {
     db.splice(index, 1);
     res.status(200).json({ message: "Removido com sucesso" });
 };
+
+// Resolver ou Ignorar alerta (RN-05: justificação obrigatória para ignorar)
+exports.resolveOrIgnore = (req, res) => {
+    const { acao, justificacao } = req.body;
+    const index = db.findIndex(i => i.id === req.params.id);
+    if (index === -1) return res.status(404).json({ message: "Alerta não encontrado" });
+    
+    // RN-05: Se ação for "ignorar", justificação é obrigatória
+    if (acao === 'ignorar' && (!justificacao || justificacao.trim() === '')) {
+        return res.status(400).json({ 
+            message: "Justificação é obrigatória para ignorar um alerta (RN-05)" 
+        });
+    }
+    
+    db[index].status = acao; // 'resolvido' ou 'ignorado'
+    db[index].justificacao = justificacao;
+    db[index].resolvedAt = new Date();
+    res.status(200).json({ message: `Alerta ${acao} com sucesso`, data: db[index] });
+};
+
+// Obter alertas de um lote específico
+exports.getByBatch = (req, res) => {
+    const alerts = db.filter(i => i.batchId === req.params.batchId);
+    res.status(200).json(alerts);
+};

@@ -30,3 +30,9 @@ exports.delete = (req, res) => {
     db.splice(index, 1);
     res.status(200).json({ message: "Removido com sucesso" });
 };
+
+// Obter medições de um lote específico
+exports.getByBatch = (req, res) => {
+    const measurements = db.filter(i => i.batchId === req.params.batchId);
+    res.status(200).json(measurements);
+};

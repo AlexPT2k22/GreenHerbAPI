@@ -1,31 +1,20 @@
-let db = [];
+// Logs de auditoria
+let logs = [];
 
+// Listar todos os logs
 exports.getAll = (req, res) => {
-    res.status(200).json(db);
+    res.status(200).json(logs);
 };
 
-exports.create = (req, res) => {
-    const newItem = { id: Date.now().toString(), ...req.body };
-    db.push(newItem);
-    res.status(201).json({ message: "Criado com sucesso", data: newItem });
-};
-
+// Obter log por ID
 exports.getById = (req, res) => {
-    const item = db.find(i => i.id === req.params.id);
-    if (!item) return res.status(404).json({ message: "Não encontrado" });
-    res.status(200).json(item);
+    const log = logs.find(l => l.id === req.params.id);
+    if (!log) return res.status(404).json({ message: "Log não encontrado" });
+    res.status(200).json(log);
 };
 
-exports.update = (req, res) => {
-    const index = db.findIndex(i => i.id === req.params.id);
-    if (index === -1) return res.status(404).json({ message: "Não encontrado" });
-    db[index] = { ...db[index], ...req.body, id: req.params.id };
-    res.status(200).json({ message: "Atualizado com sucesso", data: db[index] });
-};
-
-exports.delete = (req, res) => {
-    const index = db.findIndex(i => i.id === req.params.id);
-    if (index === -1) return res.status(404).json({ message: "Não encontrado" });
-    db.splice(index, 1);
-    res.status(200).json({ message: "Removido com sucesso" });
+// Obter logs de um utilizador específico
+exports.getByUser = (req, res) => {
+    const userLogs = logs.filter(l => l.userId === req.params.userId);
+    res.status(200).json(userLogs);
 };

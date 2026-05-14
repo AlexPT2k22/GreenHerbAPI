@@ -30,3 +30,13 @@ exports.delete = (req, res) => {
     db.splice(index, 1);
     res.status(200).json({ message: "Removido com sucesso" });
 };
+
+// Marcar tarefa como concluída
+exports.complete = (req, res) => {
+    const index = db.findIndex(i => i.id === req.params.id);
+    if (index === -1) return res.status(404).json({ message: "Tarefa não encontrada" });
+    
+    db[index].status = 'concluída';
+    db[index].completedAt = new Date();
+    res.status(200).json({ message: "Tarefa marcada como concluída", data: db[index] });
+};

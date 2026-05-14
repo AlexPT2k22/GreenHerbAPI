@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/automation.controller');
 
-router.get('/', controller.getAll);
-router.post('/', controller.create);
-router.get('/:id', controller.getById);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.delete);
+// Regras de automação
+router.post('/rules', controller.createRule);
+router.get('/rules', controller.getRules);
+router.delete('/rules/:id', controller.deleteRule);
+
+// Modo de automação
+router.patch('/mode', controller.toggleMode);
 
 module.exports = router;

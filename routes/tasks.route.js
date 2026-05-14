@@ -8,4 +8,7 @@ router.get('/:id', controller.getById);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.delete);
 
+// Endpoint específico
+router.patch('/:id/complete', controller.complete);
+
 module.exports = router;

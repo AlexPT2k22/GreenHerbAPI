@@ -1,31 +1,40 @@
-let db = [];
+// Regras de automação
+let rules = [];
+let mode = 'manual'; // 'manual' ou 'automatico'
 
-exports.getAll = (req, res) => {
-    res.status(200).json(db);
+// Criar regra de automação
+exports.createRule = (req, res) => {
+    const newRule = { id: Date.now().toString(), ...req.body };
+    rules.push(newRule);
+    res.status(201).json({ message: "Regra criada com sucesso", data: newRule });
 };
 
-exports.create = (req, res) => {
-    const newItem = { id: Date.now().toString(), ...req.body };
-    db.push(newItem);
-    res.status(201).json({ message: "Criado com sucesso", data: newItem });
+// Listar regras
+exports.getRules = (req, res) => {
+    res.status(200).json(rules);
 };
 
-exports.getById = (req, res) => {
-    const item = db.find(i => i.id === req.params.id);
-    if (!item) return res.status(404).json({ message: "Não encontrado" });
-    res.status(200).json(item);
+// Remover regra
+exports.deleteRule = (req, res) => {
+    const index = rules.findIndex(r => r.id === req.params.id);
+    if (index === -1) return res.status(404).json({ message: "Regra não encontrada" });
+    rules.splice(index, 1);
+    res.status(200).json({ message: "Regra removida com sucesso" });
 };
 
-exports.update = (req, res) => {
-    const index = db.findIndex(i => i.id === req.params.id);
-    if (index === -1) return res.status(404).json({ message: "Não encontrado" });
-    db[index] = { ...db[index], ...req.body, id: req.params.id };
-    res.status(200).json({ message: "Atualizado com sucesso", data: db[index] });
-};
-
-exports.delete = (req, res) => {
-    const index = db.findIndex(i => i.id === req.params.id);
-    if (index === -1) return res.status(404).json({ message: "Não encontrado" });
-    db.splice(index, 1);
-    res.status(200).json({ message: "Removido com sucesso" });
+// Comutar modo de automação
+exports.toggleMode = (req, res) => {
+    const { mode: newMode } = req.body;
+    
+    if (!['manual', 'automatico'].includes(newMode)) {
+        return res.status(400).json({ 
+            message: "Modo inválido. Use 'manual' ou 'automatico'" 
+        });
+    }
+    
+    mode = newMode;
+    res.status(200).json({ 
+        message: `Modo alterado para '${mode}'`,
+        currentMode: mode 
+    });
 };
