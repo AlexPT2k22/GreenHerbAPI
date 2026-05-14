@@ -1,0 +1,6 @@
+nome,especie,tempMin,tempMax,umidadeMin,umidadeMax,luminosidadeMin,luminosidadeMax
+Hortelã,Mentha spicata,15,25,50,80,5000,20000
+Manjericão,Ocimum basilicum,18,28,40,70,8000,25000
+Camomila,Matricaria chamomilla,10,20,45,75,4000,18000
+Lavanda,Lavandula angustifolia,12,24,30,60,6000,22000
+Alecrim,Rosmarinus officinalis,15,28,30,50,7000,24000

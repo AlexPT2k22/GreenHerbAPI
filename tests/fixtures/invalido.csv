@@ -1,0 +1,7 @@
+nome,especie,tempMin,tempMax,umidadeMin,umidadeMax,luminosidadeMin,luminosidadeMax
+Erva1,Sp1,-100,50,50,80,5000,20000
+Erva2,Sp2,30,20,40,70,8000,25000
+Erva3,Sp3,15,25,150,75,4000,18000
+Erva4,Sp4,15,25,50,80,200000,22000
+,Sp5,15,25,50,80,6000,22000
+Erva6,,15,25,50,80,7000,24000

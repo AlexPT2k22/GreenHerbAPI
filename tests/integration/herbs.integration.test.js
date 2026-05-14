@@ -388,4 +388,158 @@ Hortelã,Mentha piperita,10,30,35,75,3000,10000`;
     });
   });
 
+  // =====================================================
+  // 5.5 INTEGRAÇÃO: Importação CSV com Ficheiros Reais
+  // =====================================================
+
+  describe('TI-05: Importação CSV com ficheiros reais', () => {
+    const path = require('path');
+    const fs = require('fs');
+    const fixturesPath = path.join(__dirname, '../fixtures');
+
+    it('TI-05-01: Importar ficheiro CSV válido com 5 ervas', () => {
+      const csvPath = path.join(fixturesPath, 'valido.csv');
+      
+      // Verificar que ficheiro existe
+      expect(fs.existsSync(csvPath)).toBe(true);
+
+      // Ler conteúdo
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+
+      // Processar
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.valid).toBe(5);
+      expect(result.invalid).toBe(0);
+      expect(result.total).toBe(5);
+      expect(result.data).toHaveLength(5);
+      expect(result.errors).toHaveLength(0);
+      
+      // Validar dados específicos
+      expect(result.data[0].nome).toBe('Hortelã');
+      expect(result.data[0].especie).toBe('Mentha spicata');
+      expect(result.data[0].tempMin).toBe('15');
+      expect(result.data[0].tempMax).toBe('25');
+    });
+
+    it('TI-05-02: Importar ficheiro CSV inválido com 6 linhas', () => {
+      const csvPath = path.join(fixturesPath, 'invalido.csv');
+      
+      expect(fs.existsSync(csvPath)).toBe(true);
+
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.valid).toBe(0);
+      expect(result.invalid).toBe(6);
+      expect(result.total).toBe(6);
+      expect(result.data).toHaveLength(0);
+      expect(result.errors.length).toBeGreaterThan(0);
+    });
+
+    it('TI-05-03: Importar ficheiro CSV misto com 3 válidas e 2 inválidas', () => {
+      const csvPath = path.join(fixturesPath, 'misto.csv');
+      
+      expect(fs.existsSync(csvPath)).toBe(true);
+
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.valid).toBe(3);
+      expect(result.invalid).toBe(2);
+      expect(result.total).toBe(5);
+      expect(result.data).toHaveLength(3);
+      expect(result.errors.length).toBe(2);
+
+      // Validar nomes das ervas válidas
+      const nomes = result.data.map(h => h.nome);
+      expect(nomes).toContain('Hortelã');
+      expect(nomes).toContain('Manjericão');
+      expect(nomes).toContain('Camomila');
+    });
+
+    it('TI-05-04: Rejeitar ficheiro CSV vazio', () => {
+      const csvPath = path.join(fixturesPath, 'vazio.csv');
+      
+      expect(fs.existsSync(csvPath)).toBe(true);
+
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.valid).toBe(0);
+      expect(result.invalid).toBe(0);
+      expect(result.total).toBe(0);
+      expect(result.data).toHaveLength(0);
+      expect(result.errors.length).toBeGreaterThan(0);
+      // Verificar que tem erro sobre conteúdo vazio
+      expect(result.errors[0]).toMatch(/empty|vazio|CSV content/i);
+    });
+
+    it('TI-05-05: Importação válida contém todos os campos necessários', () => {
+      const csvPath = path.join(fixturesPath, 'valido.csv');
+      
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.valid).toBe(5);
+
+      // Validar estrutura de cada erva importada
+      result.data.forEach((herb) => {
+        expect(herb).toHaveProperty('id');
+        expect(herb).toHaveProperty('nome');
+        expect(herb).toHaveProperty('especie');
+        expect(herb).toHaveProperty('tempMin');
+        expect(herb).toHaveProperty('tempMax');
+        expect(herb).toHaveProperty('umidadeMin');
+        expect(herb).toHaveProperty('umidadeMax');
+        expect(herb).toHaveProperty('luminosidadeMin');
+        expect(herb).toHaveProperty('luminosidadeMax');
+        expect(herb).toHaveProperty('criacao');
+      });
+    });
+
+    it('TI-05-06: Mensagens de erro descrevem exatamente qual linha falhou', () => {
+      const csvPath = path.join(fixturesPath, 'invalido.csv');
+      
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      expect(result.errors.length).toBeGreaterThan(0);
+
+      // Verificar que erros incluem número da linha
+      result.errors.forEach((error) => {
+        expect(error).toMatch(/Linha \d+/);
+      });
+    });
+
+    it('TI-05-07: Ervas importadas de ficheiro válido passam na validação', () => {
+      const csvPath = path.join(fixturesPath, 'valido.csv');
+      
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      // Validar cada erva individualmente
+      result.data.forEach((herb) => {
+        const validation = herbsService.validateHerbData(herb);
+        expect(validation.valid).toBe(true);
+        expect(validation.errors).toHaveLength(0);
+      });
+    });
+
+    it('TI-05-08: Ficheiro misto segrega corretamente linhas válidas de inválidas', () => {
+      const csvPath = path.join(fixturesPath, 'misto.csv');
+      
+      const csvContent = fs.readFileSync(csvPath, 'utf-8');
+      const result = herbsService.importFromCSV(csvContent);
+
+      // Total deve ser soma de válidas e inválidas
+      expect(result.total).toBe(result.valid + result.invalid);
+      expect(result.total).toBe(5);
+
+      // Dados deve conter apenas as válidas
+      expect(result.data).toHaveLength(result.valid);
+      expect(result.data).toHaveLength(3);
+    });
+  });
+
 });

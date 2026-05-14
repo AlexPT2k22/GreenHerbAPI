@@ -1,0 +1,6 @@
+nome,especie,tempMin,tempMax,umidadeMin,umidadeMax,luminosidadeMin,luminosidadeMax
+Hortelã,Mentha spicata,15,25,50,80,5000,20000
+ErvaInválida,Sp1,-100,50,50,80,5000,20000
+Manjericão,Ocimum basilicum,18,28,40,70,8000,25000
+,SpSemNome,15,25,50,80,6000,22000
+Camomila,Matricaria chamomilla,10,20,45,75,4000,18000
