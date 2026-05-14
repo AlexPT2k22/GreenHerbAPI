@@ -14,6 +14,14 @@ Engenharia de Software II - Ano Letivo 2025/2026
 * **Sprint 2**
     * Criação de testes de unidade para a importação do catálogo de ervas aromáticas e criação de planos de cultivo.
     * Atualização do relatório com a matriz de rastreabilidade.
+* **Sprint 3**
+    * Criação de testes de unidade para os requisitos restantes.
+    * Atualização do relatório com a matriz de rastreabilidade.
+* **Sprint 4**
+    * Criação de testes de integração (ex: Postman) para os endpoints, considerando o espaço
+    inputs completo (ex: headers, JSON payload, métodos HTTP, respostas).
+    * Atualização do relatório com a matriz de rastreabilidade.
+
 * <a completar semanalmente>
 
 ---
