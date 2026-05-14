@@ -1,14 +1,23 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
+const { validateLoginCredentials, validateRegisterData } = require('../services/authValidation.service');
 
 exports.register = async (req, res) => {
     try {
         const { username, password, perfil } = req.body;
 
-        const newUser = new User({ username, password, perfil });
+        // Validação de entrada (regex, comprimento)
+        const validation = validateRegisterData(username, password, perfil);
+        if (!validation.valid) {
+            return res.status(400).json({ 
+                message: "Dados de registo inválidos",
+                errors: validation.errors 
+            });
+        }
 
-        await newUser.save();
-        res.status(201).json({ message: "Utilizador registado com sucesso!", id: newUser._id });
+        const newUser = await User.create({ username, password, perfil });
+
+        res.status(201).json({ message: "Utilizador registado com sucesso!", id: newUser.id });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -18,7 +27,16 @@ exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        const user = await User.findOne({ username });
+        // Validação de entrada (regex, comprimento)
+        const validation = validateLoginCredentials(username, password);
+        if (!validation.valid) {
+            return res.status(400).json({ 
+                message: "Credenciais inválidas",
+                errors: validation.errors 
+            });
+        }
+
+        const user = await User.findOne({ where: { username } });
         if (!user) {
             return res.status(401).json({ message: "Credenciais inválidas." });
         }
@@ -29,7 +47,7 @@ exports.login = async (req, res) => {
         }
 
         const payload = {
-            id: user._id,
+            id: user.id,
             perfil: user.perfil
         };
 
@@ -59,13 +77,13 @@ exports.refresh = async (req, res) => {
         // Verificar o refresh token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        const user = await User.findById(decoded.id);
+        const user = await User.findByPk(decoded.id);
         if (!user) {
             return res.status(404).json({ message: "Utilizador não encontrado." });
         }
 
         const payload = {
-            id: user._id,
+            id: user.id,
             perfil: user.perfil
         };
 
